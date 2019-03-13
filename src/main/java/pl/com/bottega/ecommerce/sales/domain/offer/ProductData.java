@@ -14,6 +14,14 @@ public class ProductData {
 
     private Date productSnapshotDate;
 
+    public ProductData(String id, String name, Money price, String productType, Date productSnapshotDate) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.productType = productType;
+        this.productSnapshotDate = productSnapshotDate;
+    }
+
     public String getId() {
         return id;
     }
