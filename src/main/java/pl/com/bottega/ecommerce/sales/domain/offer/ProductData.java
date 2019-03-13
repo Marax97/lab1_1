@@ -10,16 +10,16 @@ public class ProductData {
 
     private Money price;
 
-    private String productType;
+    private String type;
 
-    private Date productSnapshotDate;
+    private Date snapshotDate;
 
-    public ProductData(String id, String name, Money price, String productType, Date productSnapshotDate) {
+    public ProductData(String id, String name, Money price, String type, Date snapshotDate) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.productType = productType;
-        this.productSnapshotDate = productSnapshotDate;
+        this.type = type;
+        this.snapshotDate = snapshotDate;
     }
 
     public String getId() {
@@ -38,20 +38,20 @@ public class ProductData {
         this.name = name;
     }
 
-    public String getProductType() {
-        return productType;
+    public String getType() {
+        return type;
     }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Date getProductSnapshotDate() {
-        return productSnapshotDate;
+    public Date getSnapshotDate() {
+        return snapshotDate;
     }
 
-    public void setProductSnapshotDate(Date productSnapshotDate) {
-        this.productSnapshotDate = productSnapshotDate;
+    public void setSnapshotDate(Date snapshotDate) {
+        this.snapshotDate = snapshotDate;
     }
 
     public Money getPrice() {
@@ -69,8 +69,8 @@ public class ProductData {
         result = prime * result + (id == null ? 0 : id.hashCode());
         result = prime * result + (name == null ? 0 : name.hashCode());
         result = prime * result + (price == null ? 0 : price.hashCode());
-        result = prime * result + (productSnapshotDate == null ? 0 : productSnapshotDate.hashCode());
-        result = prime * result + (productType == null ? 0 : productType.hashCode());
+        result = prime * result + (snapshotDate == null ? 0 : snapshotDate.hashCode());
+        result = prime * result + (type == null ? 0 : type.hashCode());
         return result;
     }
 
@@ -107,18 +107,18 @@ public class ProductData {
         } else if (!price.equals(other.price)) {
             return false;
         }
-        if (productSnapshotDate == null) {
-            if (other.productSnapshotDate != null) {
+        if (snapshotDate == null) {
+            if (other.snapshotDate != null) {
                 return false;
             }
-        } else if (!productSnapshotDate.equals(other.productSnapshotDate)) {
+        } else if (!snapshotDate.equals(other.snapshotDate)) {
             return false;
         }
-        if (productType == null) {
-            if (other.productType != null) {
+        if (type == null) {
+            if (other.type != null) {
                 return false;
             }
-        } else if (!productType.equals(other.productType)) {
+        } else if (!type.equals(other.type)) {
             return false;
         }
         return true;

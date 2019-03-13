@@ -60,22 +60,24 @@ public class OfferItem {
                                .equals(other.productData.getPrice())) {
             return false;
         }
-        if (productName == null) {
-            if (other.productName != null) {
+        if (productData.getName() == null) {
+            if (other.productData.getName() != null) {
                 return false;
             }
-        } else if (!productName.equals(other.productName)) {
+        } else if (!productData.getName()
+                               .equals(other.productData.getName())) {
             return false;
         }
 
-        if (productId == null) {
-            if (other.productId != null) {
+        if (productData.getId() == null) {
+            if (other.productData.getId() != null) {
                 return false;
             }
-        } else if (!productId.equals(other.productId)) {
+        } else if (!productData.getId()
+                               .equals(other.productData.getId())) {
             return false;
         }
-        if (productType != other.productType) {
+        if (productData.getType() != other.productData.getType()) {
             return false;
         }
 
@@ -85,12 +87,13 @@ public class OfferItem {
 
         BigDecimal max;
         BigDecimal min;
-        if (totalCost.compareTo(other.totalCost) > 0) {
-            max = totalCost;
-            min = other.totalCost;
+        if (totalCost.getValue()
+                     .compareTo(other.totalCost.getValue()) > 0) {
+            max = totalCost.getValue();
+            min = other.totalCost.getValue();
         } else {
-            max = other.totalCost;
-            min = totalCost;
+            max = other.totalCost.getValue();
+            min = totalCost.getValue();
         }
 
         BigDecimal difference = max.subtract(min);
