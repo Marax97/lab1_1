@@ -13,7 +13,6 @@
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Objects;
 
 public class OfferItem {
@@ -26,36 +25,29 @@ public class OfferItem {
 
     private Discount discount;
 
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType,
-            int quantity) {
-        this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
+    public OfferItem(int quantity, ProductData productData, Money totalCost, Discount discount) {
+        this.quantity = quantity;
+        this.productData = productData;
+        this.totalCost = totalCost;
+        this.discount = discount;
+
+        totalCost.setValue(productData.getPrice()
+                                      .getValue()
+                                      .multiply(new BigDecimal(quantity)));
+        if (discount != null) {
+            totalCost.setValue(totalCost.getValue()
+                                        .subtract(discount.getValue()
+                                                          .getValue()));
+        }
     }
 
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType,
-            int quantity, BigDecimal discount, String discountCause) {
-        this.productId = productId;
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productSnapshotDate = productSnapshotDate;
-        this.productType = productType;
-
-        this.quantity = quantity;
-        this.discount = discount;
-        this.discountCause = discountCause;
-
-        BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null) {
-            discountValue = discountValue.subtract(discount);
-        }
-
-        this.totalCost = productPrice.multiply(new BigDecimal(quantity))
-                                     .subtract(discountValue);
+    public OfferItem(int quantity, ProductData productData, Money totalCost) {
+        this(quantity, productData, totalCost, null);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(currency, discount, discountCause, productId, productName, productPrice, productSnapshotDate, productType,
-                quantity, totalCost);
+        return Objects.hash(quantity, productData, discount, totalCost);
     }
 
     @Override

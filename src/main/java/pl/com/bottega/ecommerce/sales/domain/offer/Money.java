@@ -20,4 +20,13 @@ public class Money {
     public String getCurrency() {
         return currency;
     }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
 }
